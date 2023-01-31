@@ -1,0 +1,40 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{pctex}[2023/01/31 pctex]
+
+\RequirePackage{amsmath}
+\RequirePackage{bm}
+
+% Misc
+\newcommand{\lse}[2]{\mathrm{L}\overset{#2}{\underset{#1}{\mathrm{\Sigma}}}\mathrm{E}}
+
+% Graph-related functions
+\newcommand{\graph}{\mathcal{G}}
+\newcommand{\walk}{\mathcal{W}}
+\newcommand{\tree}{\mathcal{T}}
+\newcommand{\node}{\mathsf{N}}
+\newcommand{\nodes}{\bm{\node}}
+\newcommand{\cnode}{\mathsf{C}}
+\newcommand{\cnodes}{\bm{\cnode}}
+
+\newcommand{\children}[1]{\operatorname{ch}(#1)}
+\newcommand{\parents}[1]{\operatorname{par}(#1)}
+
+\DeclareMathOperator{\vset}{V}
+\DeclareMathOperator{\eset}{E}
+
+% PC-related functions
+\newcommand{\pc}{\mathcal{C}}
+\newcommand{\pnode}{\mathsf{P}}
+\newcommand{\pnodes}{\bm{\pnode}}
+\newcommand{\snode}{\mathsf{S}}
+\newcommand{\snodes}{\bm{\snode}}
+\newcommand{\lnode}{\mathsf{L}}
+\newcommand{\lnodes}{\bm{\lnode}}
+
+\newcommand{\region}{\mathsf{R}}
+\newcommand{\regions}{\bm{\region}}
+\newcommand{\partition}{\mathsf{P}}
+\newcommand{\partitions}{\bm{\partition}}
+\newcommand{\rg}{\mathcal{R}}
+
+\newcommand{\scope}[1]{\ensuremath{\psi(#1)}}

@@ -2,30 +2,50 @@
 
 \usepackage{graphicx}
 \usepackage{verbatim}
-\input{math.tex}
 
-\title{Examples}
+\usepackage{pctex}
+
+\title{Examples for pctex}
 \author{ Martin Trapp }
-\date{\today}
+\date{}
 
 \begin{document}
 \maketitle
 
-\section{math.tex}
-\subsection{Basic notation helper commands}
+\noindent
+`pctex` provides some useful commands for working with probabilistic circuits. The main purpose of this is reusability and harmonization of notation.
+
+\section{General/Misc}
 \begin{itemize}
-        \item Caligraphic letters e.g., $ \calA, \calX $: \verb!$\calA, \calX$!
-        \item Blackboard bold letters e.g., $ \bbA, \bbX $: \verb!$\bbA, \bbX$!
-        \item Bold letters e.g., $ \bmA, \bmx $: \verb!$\bmA, \bmx$!
-\end{itemize}
-\subsection{Basic math helpers}
-\begin{itemize}
-        \item Support e.g., $ \supp(X) $: \verb!$\supp(X)$!
-        \item Indicator function e.g., $ \indic[X = 1] $: \verb!$\indix[X = 1]$!
-        \item Differential e.g., $ \int p(x) \dd x$: \verb!$\int p(x) \dd x$!
-        \item Simulated iid e.g., $ x \simiid \pi$: \verb!$x \simiid \pi $!
-        \item Equal in distribution e.g., $ x \eqdist y$: \verb!$x \eqdist y $!
+	\item Log-sum-exp: $\lse{i=1}{k}$: \verb!$\lse{i=1}{k}$!
 \end{itemize}
 
+\section{General graphs}
+\begin{itemize}
+	\item Graph $\graph$: \verb!$\graph$!
+	\item Walk $\walk$: \verb!$\walk$!
+	\item Tree $\tree$: \verb!$\tree$!
+	\item Vertex set $\vset(\graph)$: \verb!$\vset(\graph)$!
+	\item Edge set $\eset(\graph)$: \verb!$\eset(\graph)$!
+	\item Node/nodes $\node, \nodes$: \verb!$\node$!
+	\item Child/children: $\cnode, \cnodes$: \verb!$\child$!
+	\item Children of a node: $\children{\node}$: \verb!$\children{\node}$!
+	\item Parents of a node: $\parents{\node}$: \verb!$\parents{\node}$!
+\end{itemize}
+
+\section{Probabilistic Circuits}
+\begin{itemize}
+	\item Probabilistic circuit: $\pc$: \verb!$\pc$!
+	\item Scope function: $\scope{\node}$: \verb!$\scope{\node}$!
+	\item Sum node/nodes: $\snode, \snodes$: \verb!$\snode, \snodes$!
+	\item Product node/nodes: $\pnode, \pnodes$: \verb!$\pnode, \pnodes$!
+	\item Leaf node/nodes: $\lnode, \lnodes$: \verb!$\lnode, \lnodes$!
+	\item Region/regions: $\region, \regions$: \verb!$\region, \regions$!
+	\item Partition/partitions: $\partition, \partitions$: \verb!$\partition, \partitions$!
+	\item Region-graph: $\rg$: \verb!$\rg$!
+\end{itemize}
+
+\section{Tikz / Plotting}
+TODO
 
 \end{document}
