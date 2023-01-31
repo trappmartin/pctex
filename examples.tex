@@ -18,6 +18,7 @@
 \section{General/Misc}
 \begin{itemize}
 	\item Log-sum-exp: $\lse{i=1}{k}$: \verb!$\lse{i=1}{k}$!
+	\item $\poly{N}$: \verb!$\poly{N}$!
 \end{itemize}
 
 \section{General graphs}
@@ -29,14 +30,16 @@
 	\item Edge set $\eset(\graph)$: \verb!$\eset(\graph)$!
 	\item Node/nodes $\node, \nodes$: \verb!$\node$!
 	\item Child/children: $\cnode, \cnodes$: \verb!$\child$!
-	\item Children of a node: $\children{\node}$: \verb!$\children{\node}$!
-	\item Parents of a node: $\parents{\node}$: \verb!$\parents{\node}$!
+	\item Children of a node: $\ch{\node}$: \verb!$\ch{\node}$!
+	\item Parents of a node: $\pa{\node}$: \verb!$\pa{\node}$!
+	\item Neighbours: $\neigh{\node}$: \verb!$\neigh{\node}$!
 \end{itemize}
 
 \section{Probabilistic Circuits}
 \begin{itemize}
 	\item Probabilistic circuit: $\pc$: \verb!$\pc$!
 	\item Scope function: $\scope{\node}$: \verb!$\scope{\node}$!
+	\item v-tree: $\vtree$: \verb!$\vtree$!
 	\item Sum node/nodes: $\snode, \snodes$: \verb!$\snode, \snodes$!
 	\item Product node/nodes: $\pnode, \pnodes$: \verb!$\pnode, \pnodes$!
 	\item Leaf node/nodes: $\lnode, \lnodes$: \verb!$\lnode, \lnodes$!
@@ -46,6 +49,57 @@
 \end{itemize}
 
 \section{Tikz / Plotting}
-TODO
+Plotting is based on an adaptation of `tikzlibraryspn.code.tex` by Nicola Di Mauro and Antonio Vergari.
+
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}
+
+\sumnode{s1};
+\prodnode[below=15pt of s1, xshift=30pt]{p1};
+\prodnode[below=15pt of s1, xshift=-30pt]{p2};
+
+\bernode[below=15pt of p1, xshift=-15pt]{v1}{$X_0$};
+\bernode[below=15pt of p2, xshift=15pt]{v2}{$\bar{X}_0$};
+	
+\contnode[below=15pt of p1, xshift=15pt]{v3}{$X_1$};
+\contnode[below=15pt of p2, xshift=-15pt]{v4}{$X_1$};
+	
+\weigedge[right] {s1} {p1} {$\theta_1$};
+\weigedge[left] {s1} {p2} {$\theta_2$};
+
+\edge {p1} {v1};
+\edge {p2} {v2};
+\edge {p1} {v3};
+\edge {p2} {v4};
+\end{tikzpicture}
+\end{figure}
+
+Code for the figure above:
+\begin{verbatim}
+\begin{tikzpicture}
+
+\sumnode{s1};
+\prodnode[below=15pt of s1, xshift=30pt]{p1};
+\prodnode[below=15pt of s1, xshift=-30pt]{p2};
+
+\bernode[below=15pt of p1, xshift=-15pt]{v1}{$X_0$};
+\bernode[below=15pt of p2, xshift=15pt]{v2}{$\bar{X}_0$};
+	
+\contnode[below=15pt of p1, xshift=15pt]{v3}{$X_1$};
+\contnode[below=15pt of p2, xshift=-15pt]{v4}{$X_1$};
+	
+\weigedge[right] {s1} {p1} {$\theta_1$};
+\weigedge[left] {s1} {p2} {$\theta_2$};
+
+\edge {p1} {v1};
+\edge {p2} {v2};
+\edge {p1} {v3};
+\edge {p2} {v4};  
+
+\end{tikzpicture}
+
+\end{verbatim}
+
 
 \end{document}
