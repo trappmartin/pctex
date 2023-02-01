@@ -62,7 +62,8 @@
 \newcommand{\partitions}{\bm{\partition}}
 \newcommand{\rg}{\mathcal{R}}
 
-\newcommand{\scope}[1]{\ensuremath{\psi(#1)}}
+\newcommand{\scopesym}{\psi}
+\newcommand{\scope}[1]{\ensuremath{\scopesym(#1)}}
 \newcommand{\vtree}{\ensuremath{\mathcal{V}}}
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -72,16 +73,15 @@
 \RequirePackage{tikz}
 \RequirePackage{pgfplots}
 
-\usetikzlibrary{chains}
 \def\normaltwo{\x,{exp((-(\x)^2)/0.25)}}
 
 % sum node style
 \tikzstyle{sum} = [circle,fill=white,draw=black,inner sep=0pt,line width=0.6pt,
-minimum size=18pt, path picture={\draw (path picture bounding box.south) -- (path picture bounding box.north) (path picture bounding box.west) -- (path picture bounding box.east);}, node distance=1]
+minimum size=18pt, path picture={\draw[-] (path picture bounding box.south) -- (path picture bounding box.north) (path picture bounding box.west) -- (path picture bounding box.east);}, node distance=1,-]
 
 % product node style
 \tikzstyle{prod} = [circle,fill=white,draw=black,inner sep=0pt,line width=0.6pt,
-minimum size=18pt, path picture={\draw (path picture bounding box.south east) -- (path picture bounding box.north west) (path picture bounding box.south west) -- (path picture bounding box.north east);}, node distance=1]
+minimum size=18pt, path picture={\draw[-] (path picture bounding box.south east) -- (path picture bounding box.north west) (path picture bounding box.south west) -- (path picture bounding box.north east);}, node distance=1,-]
 
 % \sumnode [tikz-options] {sum node name} 
 \newcommand{\sumnode}[2][]{
