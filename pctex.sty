@@ -22,6 +22,10 @@
 %%%%%
 \newcommand{\lse}[2]{\mathrm{L}\overset{#2}{\underset{#1}{\mathrm{\Sigma}}}\mathrm{E}}
 \newcommand{\poly}[1]{\texttt{poly}(#1)}
+\newcommand{\indepsym}{\perp \!\!\! \perp}
+\newcommand{\indep}[2]{#1\indepsym #2}
+\newcommand{\cindep}[3]{#1 \indepsym #2\,|\, #3 }
+
 
 %%%%%%%%%%%%%% 
 % Graph-related functions %
@@ -52,9 +56,9 @@
 \newcommand{\lnode}{\mathsf{L}}
 \newcommand{\lnodes}{\bm{\lnode}}
 
-\newcommand{\region}{\mathsf{R}}
+\newcommand{\region}{\mathsf{A}}
 \newcommand{\regions}{\bm{\region}}
-\newcommand{\partition}{\mathsf{P}}
+\newcommand{\partition}{\mathsf{S}}
 \newcommand{\partitions}{\bm{\partition}}
 \newcommand{\rg}{\mathcal{R}}
 
