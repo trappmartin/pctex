@@ -75,77 +75,29 @@
 
 \def\normaltwo{\x,{exp((-(\x)^2)/0.25)}}
 
+\tikzstyle{pcnode} = [circle,fill=white,draw=black,inner sep=0pt,line width=0.6pt, minimum size=18pt]
+
 % sum node style
-\tikzstyle{sum} = [circle,fill=white,draw=black,inner sep=0pt,line width=0.6pt,
-minimum size=18pt, path picture={\draw[-] (path picture bounding box.south) -- (path picture bounding box.north) (path picture bounding box.west) -- (path picture bounding box.east);}, node distance=1,-]
+\tikzstyle{sum} = [pcnode, path picture={\draw [shorten >=3pt,shorten <=3pt] (path picture bounding box.south) -- (path picture bounding box.north); \draw[shorten >=3pt,shorten <=3pt] (path picture bounding box.west) -- (path picture bounding box.east);}]
+
+\tikzstyle{land} = [pcnode, path picture={\draw [shorten >=6pt,shorten <=6pt] (path picture bounding box.south east) -- ([yshift=-3pt] path picture bounding box.north) -- (path picture bounding box.south west) ;}]
+\tikzstyle{lor} = [pcnode, path picture={\draw [shorten >=6pt,shorten <=6pt] (path picture bounding box.north east) -- ([yshift=3pt] path picture bounding box.south) -- (path picture bounding box.north west) ;}]
+
+\tikzstyle{max} = [pcnode, path picture={\node at (path picture bounding box.center) {\scriptsize $\max$};}]
 
 % product node style
-\tikzstyle{prod} = [circle,fill=white,draw=black,inner sep=0pt,line width=0.6pt,
-minimum size=18pt, path picture={\draw[-] (path picture bounding box.south east) -- (path picture bounding box.north west) (path picture bounding box.south west) -- (path picture bounding box.north east);}, node distance=1,-]
+\tikzstyle{prod} = [pcnode, path picture={\draw [shorten >=6pt,shorten <=6pt] (path picture bounding box.south east) -- (path picture bounding box.north west); \draw[shorten >=6pt,shorten <=6pt] (path picture bounding box.south west) -- (path picture bounding box.north east);}]
 
-% \sumnode [tikz-options] {sum node name} 
-\newcommand{\sumnode}[2][]{
-  \node[sum, #1] (#2) {};
-}
+\tikzstyle{bern} = [pcnode, path picture={\draw circle (3pt);}]
 
-% \prodnode [tikz-options] {product node name} 
-\newcommand{\prodnode}[2][]{
-  \node[prod, #1] (#2) {$\times$};
-}
-\newcommand{\wprodnode}[3][]{
-  \node[prod, #1] (#2) {$\color{#3}\times$};
-}
-
-% \maxnode [tikz-options] {max node name} 
-\newcommand{\maxnode}[2][]{
-  \node[circle,fill=white,draw=black,inner sep=0pt,line width=0.6pt,
-  minimum size=18pt, node distance=1, #1] (#2) {\scriptsize $max$};
-}
-
-% \emptynode [tikz-options] {generic node name}
-\newcommand{\emptynode}[2][]{
-  \node[circle,fill=white,draw=black,inner sep=0pt,line width=0.6pt,
-  minimum size=18pt, node distance=1, #1] (#2) {};
-}
-
-\newcommand{\varnode}[3][]{
-  \node[circle,fill=white,draw=black,inner sep=0pt,line width=0.6pt, minimum size=19pt, #1] (#2) {#3};
-}
-
-\newcommand{\varsqnode}[4][]{
-  \node[rectangle, rounded corners=3pt,fill=white,draw=#4,inner sep=0pt,line width=0.6pt, minimum size=19pt, #1] (#2) {#3};
-}
-
-\newcommand{\evnode}[4][]{
-  \node[circle,fill=#4,text=white,inner sep=0pt, minimum size=18pt, #1] (#2) {#3};
-}
-
-\newcommand{\evnodevar}[5][]{
-  \node[circle,fill=#4,text=white,inner sep=0pt, minimum size=18pt,
-  #1] (#2) {#3};
-  \node[below=1pt of #2, xshift=1pt] (#2_vn) {#5};
-}
-
-\newcommand{\bernode}[3][]{
-  \node[circle,fill=white,draw=black,inner sep=0pt,line width=0.6pt,
-  minimum size=18pt, #1] (#2) {\tikz\draw circle (3pt);};
-  \node[below=1pt of #2, xshift=1pt] (#2_vn) {#3};
-}
-
-\newcommand{\contnode}[3][]{
-  \node[circle,fill=white,draw=black,inner sep=0pt,line width=0.6pt,
-  minimum size=18pt, node distance=1, #1] (#2) {           
-  \begin{tikzpicture}[scale=0.18]
-      \draw[line width=0.6pt,domain=-1.5:1.5] plot (\normaltwo);
-   \end{tikzpicture}
-            };
-  \node[below=1pt of #2, xshift=1pt] (#2_vn) {#3};
-}
-
-\newcommand{\catnode}[3][]{
-  \node[circle,fill=white,draw=black,inner sep=0pt,line width=0.6pt,
-  minimum size=18pt, node distance=1, #1] (#2) {           
-          \begin{tikzpicture} %these distributions look really distorted, and are the ones I want to include, inside the minipage
+\tikzstyle{cont} = [pcnode, path picture={
+	\node at (path picture bounding box.center) {\begin{tikzpicture}[scale=0.18]
+      		\draw[line width=0.6pt,domain=-1.5:1.5] plot (\normaltwo);
+   		\end{tikzpicture}
+   	};}]
+	
+\tikzstyle{cat} = [pcnode, path picture={
+	\node at (path picture bounding box.center) {\begin{tikzpicture} %these distributions look really distorted, and are the ones I want to include, inside the minipage
                 \begin{axis}[
                 no markers, scale only axis, domain=-4:4, smooth,
                 axis lines=none,
@@ -156,28 +108,4 @@ minimum size=18pt, path picture={\draw[-] (path picture bounding box.south east)
                 \addplot [mark=none] coordinates { (1,0) (1,5)};
                 \addplot [mark=none] coordinates { (2,0) (2,8)};
                 \end{axis}
-            \end{tikzpicture}};
-  \node[below=1pt of #2] (#2_vn) {#3};
-}
-
-% \edge [options] {inputs} {outputs}
-\newcommand{\edge}[3][]{ %
-  % Connect all nodes #2 to all nodes #3.
-  \foreach \x in {#2} { %
-    \foreach \y in {#3} { %
-      \path (\x) edge [-latex,line width=0.6pt,#1] (\y) ;%
-    } ;
-  } ;
-}
-
-\newcommand{\upedge}[3][]{
-  \path (#2) edge [line width=1pt,->,>=stealth,#1] (#3);
-}
-
-\newcommand{\ledge}[4][]{
-  \path (#2) edge [line width=1pt,->,>=stealth,#1,edge label=#4] (#3);
-}
-
-\newcommand{\weigedge}[4][]{
-  \draw[line width=0.6pt,-latex,#1] (#2) edge node [midway,line width=0.6pt,#1] {#4} (#3) ;
-}
+            \end{tikzpicture}   	};}]

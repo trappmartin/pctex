@@ -53,55 +53,92 @@
 \section{Tikz / Plotting}
 Plotting is based on an adaptation of `tikzlibraryspn.code.tex` by Nicola Di Mauro and Antonio Vergari.
 
+\noindent
+Examples to illustrate how to use the plotting:
 \begin{figure}[h!]
 \centering
+\begin{tikzpicture}[
+	>=latex,
+	level/.style={sibling distance = 2cm/(#1), 
+	level distance = 1.2cm},
+	edge from parent/.style={draw,-latex}
+	]
+\node[sum] (s1) {}
+    child {node[prod]  (p1) {}
+    	child {node[bern, label=below:{$X_1$}]  (s2) {}}
+	child {node[cont, label=below:{$X_2$}]  (s3) {}}
+    }
+    child {node[prod, draw=orange] (p2) {}
+        	child {node[cat, label=below:{$X_1$}]  (s2) {}}
+	child {node[cont, label=below:{$X_2$}]  (s3) {}}
+    };
+    
+\draw[->] (s1) -- node[left] {$\theta_1$} (p1);
+\draw[->] (s1) -- node[right] {$\theta_2$} (p2);
+\end{tikzpicture}
+\hfill
 \begin{tikzpicture}
 
-\sumnode{s1};
-\prodnode[below=15pt of s1, xshift=30pt]{p1};
-\prodnode[below=15pt of s1, xshift=-30pt]{p2};
+\node[sum]  at (0,1) {};
+\node[prod] at (1,1) {};
+\node[max] at (2,1) {};
+\node[land] at (3,1) {};
+\node[lor] at (4,1) {};
 
-\bernode[below=15pt of p1, xshift=-15pt]{v1}{$X_0$};
-\bernode[below=15pt of p2, xshift=15pt]{v2}{$\bar{X}_0$};
-	
-\contnode[below=15pt of p1, xshift=15pt]{v3}{$X_1$};
-\contnode[below=15pt of p2, xshift=-15pt]{v4}{$X_1$};
-	
-\weigedge[right] {s1} {p1} {$\theta_1$};
-\weigedge[left] {s1} {p2} {$\theta_2$};
+\node[cont] at (0,0) {};
+\node[bern] at (1,0) {};
+\node[cat] at (2,0) {};
+\node[pcnode] (c) at (3,0) {\large$\top$};
+\node (t) at (3,-1) {some custom node};
 
-\edge {p1} {v1};
-\edge {p2} {v2};
-\edge {p1} {v3};
-\edge {p2} {v4};
+\draw[->] (t) -- (c);
+
 \end{tikzpicture}
 \end{figure}
 
-Code for the figure above:
+Code for the figures above:
+\subsection*{Figure 1}
+\begin{verbatim}
+\begin{tikzpicture}[
+	>=latex,
+	level/.style={sibling distance = 2cm/(#1), 
+	level distance = 1.2cm},
+	edge from parent/.style={draw,-latex}
+	]
+\node[sum] (s1) {}
+    child {node[prod]  (p1) {}
+    	child {node[bern, label=below:{$X_1$}]  (s2) {}}
+	child {node[cont, label=below:{$X_2$}]  (s3) {}}
+    }
+    child {node[prod, draw=orange] (p2) {}
+        	child {node[cat, label=below:{$X_1$}]  (s2) {}}
+	child {node[cont, label=below:{$X_2$}]  (s3) {}}
+    };
+    
+\draw[->] (s1) -- node[left] {$\theta_1$} (p1);
+\draw[->] (s1) -- node[right] {$\theta_2$} (p2);
+\end{tikzpicture}
+\end{verbatim}
+
+\subsection*{Figure 2 / Reference}
 \begin{verbatim}
 \begin{tikzpicture}
 
-\sumnode{s1};
-\prodnode[below=15pt of s1, xshift=30pt]{p1};
-\prodnode[below=15pt of s1, xshift=-30pt]{p2};
+\node[sum]  at (0,1) {};
+\node[prod] at (1,1) {};
+\node[max] at (2,1) {};
+\node[land] at (3,1) {};
+\node[lor] at (4,1) {};
 
-\bernode[below=15pt of p1, xshift=-15pt]{v1}{$X_0$};
-\bernode[below=15pt of p2, xshift=15pt]{v2}{$\bar{X}_0$};
-	
-\contnode[below=15pt of p1, xshift=15pt]{v3}{$X_1$};
-\contnode[below=15pt of p2, xshift=-15pt]{v4}{$X_1$};
-	
-\weigedge[right] {s1} {p1} {$\theta_1$};
-\weigedge[left] {s1} {p2} {$\theta_2$};
+\node[cont] at (0,0) {};
+\node[bern] at (1,0) {};
+\node[cat] at (2,0) {};
+\node[pcnode] (c) at (3,0) {\large$\top$};
+\node (t) at (3,-1) {some custom node};
 
-\edge {p1} {v1};
-\edge {p2} {v2};
-\edge {p1} {v3};
-\edge {p2} {v4};  
+\draw[->] (t) -- (c);
 
 \end{tikzpicture}
-
 \end{verbatim}
-
 
 \end{document}

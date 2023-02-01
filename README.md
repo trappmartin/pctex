@@ -39,28 +39,18 @@ For general math, see [shortex](https://github.com/trevorcampbell/shortex)
 ### Tikz / Plotting
 Plotting is based on an adaptation of `tikzlibraryspn.code.tex` by Nicola Di Mauro and Antonio Vergari.
 
-Example plot in example.pdf:
+Reference of provided node type styles:
 
 ```
-\begin{tikzpicture}
+\node[sum]  at (0,1) {}; % sum node
+\node[prod] at (1,1) {}; % prod node
+\node[max] at (2,1) {}; % max node
+\node[land] at (3,1) {}; % logic and node
+\node[lor] at (4,1) {}; % logic or node
 
-\sumnode{s1};
-\prodnode[below=15pt of s1, xshift=30pt]{p1};
-\prodnode[below=15pt of s1, xshift=-30pt]{p2};
-
-\bernode[below=15pt of p1, xshift=-15pt]{v1}{$X_0$};
-\bernode[below=15pt of p2, xshift=15pt]{v2}{$\bar{X}_0$};
-	
-\contnode[below=15pt of p1, xshift=15pt]{v3}{$X_1$};
-\contnode[below=15pt of p2, xshift=-15pt]{v4}{$X_1$};
-	
-\weigedge[right] {s1} {p1} {$\theta_1$};
-\weigedge[left] {s1} {p2} {$\theta_2$};
-
-\edge {p1} {v1};
-\edge {p2} {v2};
-\edge {p1} {v3};
-\edge {p2} {v4};
-\end{tikzpicture}
+\node[cont] at (0,0) {}; % continuous/gaussian node
+\node[bern] at (1,0) {}; % bernouli node
+\node[cat] at (2,0) {}; % categorical node
+\node[pcnode] (c) at (3,0) {\large$\top$}; % custom node
 ```
 
