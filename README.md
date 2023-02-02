@@ -14,7 +14,7 @@ For general math, see [shortex](https://github.com/trevorcampbell/shortex)
 ### General graphs
 
 - Graph `\graph`
-- Walk `\walk
+- Walk `\walk`
 - Tree `\tree`
 - Vertex set `\vset(\graph)`
 - Edge set `\eset(\graph)`
@@ -42,15 +42,19 @@ Plotting is based on an adaptation of `tikzlibraryspn.code.tex` by Nicola Di Mau
 Reference of provided node type styles:
 
 ```
-\node[sum]  at (0,1) {}; % sum node
-\node[prod] at (1,1) {}; % prod node
-\node[max] at (2,1) {}; % max node
-\node[land] at (3,1) {}; % logic and node
-\node[lor] at (4,1) {}; % logic or node
+% Internal nodes
+\node[sum] {}; % sum node
+\node[prod] {}; % prod node
+\node[max] {}; % max node
+\node[land] {}; % logic and node
+\node[lor] {}; % logic or node
 
-\node[cont] at (0,0) {}; % continuous/gaussian node
-\node[bern] at (1,0) {}; % bernouli node
-\node[cat] at (2,0) {}; % categorical node
-\node[pcnode] (c) at (3,0) {\large$\top$}; % custom node
+% Leaf nodes
+\node[cont] {}; % continuous/gaussian node
+\node[bern] {}; % bernouli node
+\node[cat] {}; % categorical node
+
+% Generic node style for customization
+\node[pcnode] {\large$\top$}; 
 ```
 
